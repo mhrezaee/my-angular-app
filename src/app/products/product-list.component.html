@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-header">Products</div>
+  <div class="card-header">{{ pageTitle }}</div>
   <div class="card-body">
     <div class="row">
       <div class="col-md-2">Filter:</div>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="table-responsive">
-      <table class="table">
+      <table class="table" *ngIf="products.length">
         <thead>
           <tr>
             <th>
@@ -26,7 +26,16 @@
             <th>Rate</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td></td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.code }}</td>
+            <td>{{ product.releaseDate }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.rate }}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
