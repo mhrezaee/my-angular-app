@@ -8,6 +8,7 @@ export class ProductListComponent {
   pageTitle: string = 'Products';
   imageWidth: number = 70;
   imageMargin: number = 2;
+  showImage: boolean = false;
   products: any[] = [
     {
       id: 3,
@@ -30,4 +31,8 @@ export class ProductListComponent {
       imageUrl: 'assets/images/keyboard.png',
     },
   ];
+
+  toggleImage(): void {
+    this.showImage = !this.showImage;
+  }
 }
