@@ -43,7 +43,7 @@
             <td>{{ product.name }}</td>
             <td>{{ product.code }}</td>
             <td>{{ product.releaseDate }}</td>
-            <td>{{ product.price }}</td>
+            <td>{{ product.price | currency : "EUR" }}</td>
             <td>{{ product.rate }}</td>
           </tr>
         </tbody>
