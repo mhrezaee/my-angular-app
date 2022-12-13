@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
 
 @Component({
@@ -6,7 +6,7 @@ import { IProduct } from './product';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
   pageTitle: string = 'Products';
   imageWidth: number = 70;
   imageMargin: number = 2;
@@ -34,6 +34,10 @@ export class ProductListComponent {
       imageUrl: 'assets/images/keyboard.png',
     },
   ];
+
+  ngOnInit(): void {
+    console.log('method init not implemented!');
+  }
 
   toggleImage(): void {
     this.showImage = !this.showImage;
