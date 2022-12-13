@@ -11,7 +11,17 @@ export class ProductListComponent implements OnInit {
   imageWidth: number = 70;
   imageMargin: number = 2;
   showImage: boolean = false;
-  searchTerm: string = '';
+  private _searchTerm: string = '';
+
+  get searchTerm(): string {
+    return this._searchTerm;
+  }
+
+  set searchTerm(value: string) {
+    this._searchTerm = value;
+  }
+
+  filteredProducts: IProduct[] = [];
   products: IProduct[] = [
     {
       id: 3,
