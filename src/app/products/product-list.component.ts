@@ -19,6 +19,7 @@ export class ProductListComponent implements OnInit {
 
   set searchTerm(value: string) {
     this._searchTerm = value;
+    this.filteredProducts = this.performFilter(value);
   }
 
   filteredProducts: IProduct[] = [];
@@ -45,8 +46,16 @@ export class ProductListComponent implements OnInit {
     },
   ];
 
+  performFilter(term: string): IProduct[] {
+    term = term.toLocaleLowerCase();
+    return this.products.filter((product: IProduct) =>
+      product.name.toLocaleLowerCase().includes(term)
+    );
+  }
+
   ngOnInit(): void {
     console.log('method init not implemented!');
+    this.searchTerm = '';
   }
 
   toggleImage(): void {
