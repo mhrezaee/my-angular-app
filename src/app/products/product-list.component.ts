@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
+import { ProductService } from './product.service';
 
 @Component({
   selector: 'pm-products',
@@ -7,6 +8,7 @@ import { IProduct } from './product';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
+  constructor(private _productService: ProductService) {}
   pageTitle: string = 'Products';
   imageWidth: number = 70;
   imageMargin: number = 2;
@@ -23,28 +25,7 @@ export class ProductListComponent implements OnInit {
   }
 
   filteredProducts: IProduct[] = [];
-  products: IProduct[] = [
-    {
-      id: 3,
-      name: 'Monitor',
-      code: 'PC-003',
-      releaseDate: '20.12.2020',
-      description: '24 inch monitor!',
-      price: 150.99,
-      rate: 4.2,
-      imageUrl: 'assets/images/monitor.png',
-    },
-    {
-      id: 7,
-      name: 'Keyboard',
-      code: 'PC-007',
-      releaseDate: '15.08.2021',
-      description: 'a very nice keyboard!',
-      price: 81.99,
-      rate: 4.8,
-      imageUrl: 'assets/images/keyboard.png',
-    },
-  ];
+  products: IProduct[] = [];
 
   performFilter(term: string): IProduct[] {
     term = term.toLocaleLowerCase();
@@ -54,8 +35,8 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('method init not implemented!');
-    this.searchTerm = '';
+    this.products = this._productService.getProducts();
+    this.filteredProducts = this.products;
   }
 
   toggleImage(): void {
