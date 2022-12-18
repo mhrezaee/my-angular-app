@@ -1,32 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IProduct } from './product';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  getProducts(): IProduct[] {
-    return [
-      {
-        id: 3,
-        name: 'Monitor',
-        code: 'PC-003',
-        releaseDate: '20.12.2020',
-        description: '24 inch monitor!',
-        price: 150.99,
-        rate: 4.2,
-        imageUrl: 'assets/images/monitor.png',
-      },
-      {
-        id: 7,
-        name: 'Keyboard',
-        code: 'PC-007',
-        releaseDate: '15.08.2021',
-        description: 'a very nice keyboard!',
-        price: 81.99,
-        rate: 4.8,
-        imageUrl: 'assets/images/keyboard.png',
-      },
-    ];
+  private _productUrl = 'api/products.josn'; //api url will go here
+  constructor(private _http: HttpClient) {}
+
+  getProducts(): Observable<IProduct[]> {
+    return this._http.get<IProduct[]>(this._productUrl);
   }
 }
