@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from './product';
 
 @Component({
@@ -7,7 +7,7 @@ import { IProduct } from './product';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-  constructor(private _route: ActivatedRoute) {}
+  constructor(private _route: ActivatedRoute, private _router: Router) {}
 
   pageTitle: string = 'Product Detail';
   product: IProduct | undefined;
@@ -25,5 +25,9 @@ export class ProductDetailComponent implements OnInit {
       rate: 4.2,
       imageUrl: 'assets/images/monitor.png',
     };
+  }
+
+  onBack(): void {
+    this._router.navigate(['/products']);
   }
 }
