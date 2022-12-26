@@ -40,7 +40,11 @@
                 [alt]="product.name"
               />
             </td>
-            <td>{{ product.name }}</td>
+            <td>
+              <a [routerLink]="['/products', product.id]">
+                {{ product.name }}
+              </a>
+            </td>
             <td>{{ product.code | convertToSpaces : "-" }}</td>
             <td>{{ product.releaseDate }}</td>
             <td>{{ product.price | currency : "EUR" }}</td>
